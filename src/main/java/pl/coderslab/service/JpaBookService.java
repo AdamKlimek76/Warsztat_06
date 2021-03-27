@@ -22,21 +22,25 @@ public class JpaBookService implements BookService {
 
     @Override
     public void addBook(Book book) {
+
         bookRepository.save(book);
     }
 
     @Override
     public Optional<Book> getBookById(Long bookId) {
-        return Optional.empty();
+
+        return bookRepository.findById(bookId);
     }
 
     @Override
-    public void deleteBook(Long bookId) {
-
+    public void deleteBook(Long bookId)
+    {
+        bookRepository.deleteById(bookId);
     }
 
     @Override
     public void updateBook(Book book) {
+        bookRepository.save(book);
 
     }
 }
